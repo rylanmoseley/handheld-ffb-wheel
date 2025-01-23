@@ -87,6 +87,9 @@ void loop() {
   Joystick.setButton(0, analogRead(A11) > 1000);
   Joystick.setButton(1, analogRead(A9) > 1000);
   Joystick.setButton(2, analogRead(A10) > 1000);
+
+  // status light
+  digitalWrite(11, HIGH);
   
   if (forces[0] > 0) {
     digitalWrite(2, HIGH);
