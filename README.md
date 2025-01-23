@@ -41,15 +41,14 @@ Current measurement for force feedback output (with limiting)
 ## Pinout
 |Function|Type|Pin|
 |-|-|-|
-|Wheel motor direction 1|Digital Out|D2
-|Wheel motor speed|PWM Out|D3
-|Wheel motor direction 2|Digital Out|D4
+|Wheel motor output 1|PWM Out|D3
 |Camera left/right|Analog In|A7 (D6)
 |Camera up/down|Analog In|A8 (D8)
 |Shift Up|Analog In|A9 (D9)
 |Shift Down|Analog In|A10 (D10)
 |Power/status light|Digital Out|D11
 |Reset Button|Analog In|A11 (D12)
+|Wheel motor output 2|PWM Out|D13
 |Steering|Analog In|A0
 |Throttle|Analog In|A1
 |Brake|Analog In|A2
