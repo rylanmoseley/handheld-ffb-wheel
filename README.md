@@ -1,4 +1,12 @@
 # handheld-ffb-wheel
+An Arduino Leonardo-based steering wheel controller, in a handheld form factor with force-feedback
+
+Software built using [YukMingLaw/ArduinoJoystickWithFFBLibrary](https://github.com/YukMingLaw/ArduinoJoystickWithFFBLibrary)
+
+## Plans
+- 3D printed shell, trigger mechanisms, wheel
+- Potentiometers for each of steering, throttle, brake, clutch, and handbrake
+- 2d joystick for camera control
 
 ## Layout
 1 motor (PWM output):
