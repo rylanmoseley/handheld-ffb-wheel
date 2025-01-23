@@ -8,6 +8,18 @@ Software built using [YukMingLaw/ArduinoJoystickWithFFBLibrary](https://github.c
 - Potentiometers for each of steering, throttle, brake, clutch, and handbrake
 - 2d joystick for camera control
 
+## Parts
+- Arduino Leonardo
+- A random dc motor I had laying around
+- [DRV8871 DC Motor Driver](https://www.adafruit.com/product/3190#tutorials)
+- 4x 330 Ohm Resistors
+- 1 LED
+- [12V DC Power Supply, with barrel jack cut off](https://www.adafruit.com/product/798)
+- [USB C to USB Micro cable](https://www.adafruit.com/product/3878)
+- [5x 10k Potentiometer](https://www.adafruit.com/product/562)
+- [3x Tactile Button Switch (this is a pack of 20, you only need 3)](https://www.adafruit.com/product/367#tutorials)
+- [2 Axis Joystick](https://www.adafruit.com/product/245)
+
 ## Layout
 1 motor (PWM output):
 1. feedback motor on the wheel - direction, speed
@@ -25,18 +37,10 @@ Software built using [YukMingLaw/ArduinoJoystickWithFFBLibrary](https://github.c
 1 joystick (2x analog input):
 1. camera controls on 2 axis joystick
 
-5 buttons (Analog input):
-1. reset - input 1
-2. shift up - input 1
-3. shift down - input 1
-
-Current measurement for force feedback output (with limiting)
-
-## Software
-- 1 motor controller
-- 7 axes
-- 3 buttons
-- 1 led
+3 buttons (Analog input):
+1. reset
+2. shift up
+3. shift down
 
 ## Pinout
 |Function|Type|Pin|
