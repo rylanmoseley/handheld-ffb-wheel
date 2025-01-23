@@ -30,7 +30,7 @@ void setup() {
   Joystick.setRxAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setRyAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setRzAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
-  Joystick.setRudder(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
+  Joystick.setRudderRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setGains(gains);
   Joystick.begin(true);
 
