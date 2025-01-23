@@ -3318,7 +3318,7 @@
 		(uuid "4c228268-c975-4223-a64f-d52319fc29aa")
 	)
 	(label "Motor Controller"
-		(at 86.36 97.79 0)
+		(at 78.74 115.57 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
