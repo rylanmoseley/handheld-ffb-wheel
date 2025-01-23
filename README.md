@@ -54,3 +54,6 @@ Current measurement for force feedback output (with limiting)
 |Brake|Analog In|A2
 |Clutch|Analog In|A3
 |Handbrake|Analog In|A4
+
+![image](https://github.com/user-attachments/assets/d85c9a8c-747d-4ac3-82ca-b6af365d31d4)
+
