@@ -9,10 +9,10 @@ Gains gains[2];
 EffectParams effectparams[2];
 
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK,
-  3, 0,                  // Button Count, Hat Switch Count
+  3, 1,                  // Button Count, Hat Switch Count
   true, true, true,     // X, Y, and Z
-  true, true, true,   //  Rx, Ry, and Rz
-  true, false,          // rudder and throttle
+  true, true, false,   //  Rx, Ry, and Rz
+  false, false,          // rudder and throttle
   false, false, false);    // accelerator, brake, and steering
 
 volatile long value = 0;
@@ -29,16 +29,13 @@ void setup() {
   Joystick.setZAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setRxAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setRyAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
-  Joystick.setRzAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
-  Joystick.setRudderRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setGains(gains);
   Joystick.begin(true);
 
   // PWM and Digital outputs
-  pinMode(2, OUTPUT);
   pinMode(3, OUTPUT);
-  pinMode(4, OUTPUT);
   pinMode(11, OUTPUT);
+  pinMode(13, OUTPUT);
 
   // Analog Inputs
   pinMode(A0, INPUT);
@@ -75,8 +72,14 @@ void loop() {
   Joystick.setZAxis(analogRead(A2));
   Joystick.setRxAxis(analogRead(A3));
   Joystick.setRyAxis(analogRead(A4));
-  Joystick.setRzAxis(analogRead(A7));
-  Joystick.setRudder(analogRead(A8));
+  
+  int x = analogRead(A7);
+  int y = analogRead(A8);
+  if (x > 400 || y > 400) { // TODO set this with the actual Pots
+    Joystick.setHatSwitch(0, atan2(y, x));
+  } else {
+    Joystick.setHatSwitch(0, -1);
+  }
 
   effectparams[0].springMaxPosition = ENCODER_MAX_VALUE;
   effectparams[0].springPosition = analogRead(A0);
@@ -92,11 +95,10 @@ void loop() {
   digitalWrite(11, HIGH);
   
   if (forces[0] > 0) {
-    digitalWrite(2, HIGH);
-    digitalWrite(4, LOW);
+    analogWrite(3, abs(forces[0]));
+    digitalWrite(13, LOW);
   } else {
-    digitalWrite(2, LOW);
-    digitalWrite(4, HIGH);
+    analogWrite(13, abs(forces[0]));
+    digitalWrite(3, LOW);
   }
-  analogWrite(3, abs(forces[0]));
 }
