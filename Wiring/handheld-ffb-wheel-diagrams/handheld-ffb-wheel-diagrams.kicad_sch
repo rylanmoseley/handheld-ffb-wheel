@@ -1964,22 +1964,10 @@
 		(uuid "2232b0cf-c5c9-4bd6-9daa-482a5d534c30")
 	)
 	(junction
-		(at 82.55 92.71)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "334ad6d3-5565-47dd-9e5c-4ca0408f5551")
-	)
-	(junction
 		(at 120.65 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "47b76319-8742-42e7-9ab7-b301cf9e7221")
-	)
-	(junction
-		(at 120.65 92.71)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "55421a25-9f81-4efa-af91-c1fcfa347032")
 	)
 	(junction
 		(at 149.86 25.4)
@@ -2018,12 +2006,6 @@
 		(uuid "806a4033-1338-40e2-8353-d63f59005ea6")
 	)
 	(junction
-		(at 92.71 92.71)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "99293142-7731-4f31-82e6-1e721a2f7e44")
-	)
-	(junction
 		(at 115.57 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2054,6 +2036,12 @@
 		(uuid "b4ba6c37-dcfe-42ba-acc9-033b6ddd08f6")
 	)
 	(junction
+		(at 92.71 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b75dc2e8-e1a2-40a7-9099-4c3bf09cbd3e")
+	)
+	(junction
 		(at 138.43 38.1)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2082,6 +2070,18 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d8335bef-5202-4568-a3da-f05cea4206de")
+	)
+	(junction
+		(at 120.65 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "da33965a-1b51-49d5-a2da-38d87129cc67")
+	)
+	(junction
+		(at 82.55 87.63)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e0a85dd1-b476-459c-90da-cdddfdbebd64")
 	)
 	(wire
 		(pts
@@ -2115,7 +2115,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 55.88) (xy 80.01 55.88)
+			(xy 76.2 46.99) (xy 80.01 46.99)
 		)
 		(stroke
 			(width 0)
@@ -2125,7 +2125,7 @@
 	)
 	(wire
 		(pts
-			(xy 83.82 25.4) (xy 83.82 114.3)
+			(xy 83.82 25.4) (xy 83.82 106.68)
 		)
 		(stroke
 			(width 0)
@@ -2145,7 +2145,7 @@
 	)
 	(wire
 		(pts
-			(xy 80.01 55.88) (xy 80.01 109.22)
+			(xy 80.01 46.99) (xy 80.01 101.6)
 		)
 		(stroke
 			(width 0)
@@ -2155,7 +2155,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 92.71) (xy 154.94 92.71)
+			(xy 120.65 87.63) (xy 154.94 87.63)
 		)
 		(stroke
 			(width 0)
@@ -2175,7 +2175,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 93.98) (xy 44.45 63.5)
+			(xy 44.45 88.9) (xy 44.45 54.61)
 		)
 		(stroke
 			(width 0)
@@ -2185,7 +2185,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 121.92) (xy 100.33 121.92)
+			(xy 132.08 114.3) (xy 100.33 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2225,7 +2225,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 104.14) (xy 100.33 99.06)
+			(xy 100.33 96.52) (xy 100.33 91.44)
 		)
 		(stroke
 			(width 0)
@@ -2255,7 +2255,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 20.32) (xy 45.72 73.66)
+			(xy 45.72 20.32) (xy 45.72 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2275,7 +2275,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 24.13) (xy 49.53 66.04)
+			(xy 49.53 24.13) (xy 49.53 57.15)
 		)
 		(stroke
 			(width 0)
@@ -2285,7 +2285,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 111.76) (xy 132.08 121.92)
+			(xy 132.08 104.14) (xy 132.08 114.3)
 		)
 		(stroke
 			(width 0)
@@ -2295,7 +2295,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 63.5) (xy 50.8 63.5)
+			(xy 44.45 54.61) (xy 50.8 54.61)
 		)
 		(stroke
 			(width 0)
@@ -2325,7 +2325,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 111.76) (xy 81.28 81.28)
+			(xy 81.28 104.14) (xy 81.28 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2335,7 +2335,7 @@
 	)
 	(wire
 		(pts
-			(xy 120.65 81.28) (xy 120.65 92.71)
+			(xy 120.65 81.28) (xy 120.65 87.63)
 		)
 		(stroke
 			(width 0)
@@ -2355,7 +2355,7 @@
 	)
 	(wire
 		(pts
-			(xy 49.53 66.04) (xy 50.8 66.04)
+			(xy 49.53 57.15) (xy 50.8 57.15)
 		)
 		(stroke
 			(width 0)
@@ -2365,7 +2365,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 78.74) (xy 161.29 93.98)
+			(xy 161.29 78.74) (xy 161.29 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2395,7 +2395,7 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 22.86) (xy 48.26 68.58)
+			(xy 48.26 22.86) (xy 48.26 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2405,7 +2405,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 73.66) (xy 50.8 73.66)
+			(xy 45.72 64.77) (xy 50.8 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2415,7 +2415,7 @@
 	)
 	(wire
 		(pts
-			(xy 80.01 109.22) (xy 85.09 109.22)
+			(xy 80.01 101.6) (xy 85.09 101.6)
 		)
 		(stroke
 			(width 0)
@@ -2425,7 +2425,7 @@
 	)
 	(wire
 		(pts
-			(xy 58.42 38.1) (xy 58.42 25.4)
+			(xy 58.42 29.21) (xy 58.42 25.4)
 		)
 		(stroke
 			(width 0)
@@ -2455,7 +2455,7 @@
 	)
 	(wire
 		(pts
-			(xy 78.74 73.66) (xy 78.74 45.72)
+			(xy 78.74 64.77) (xy 78.74 45.72)
 		)
 		(stroke
 			(width 0)
@@ -2465,7 +2465,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.29 93.98) (xy 44.45 93.98)
+			(xy 161.29 88.9) (xy 44.45 88.9)
 		)
 		(stroke
 			(width 0)
@@ -2495,7 +2495,7 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 111.76) (xy 81.28 111.76)
+			(xy 85.09 104.14) (xy 81.28 104.14)
 		)
 		(stroke
 			(width 0)
@@ -2505,7 +2505,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 68.58) (xy 76.2 68.58)
+			(xy 95.25 59.69) (xy 76.2 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2555,7 +2555,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 99.06) (xy 132.08 99.06)
+			(xy 100.33 91.44) (xy 132.08 91.44)
 		)
 		(stroke
 			(width 0)
@@ -2565,7 +2565,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 92.71) (xy 82.55 92.71)
+			(xy 60.96 87.63) (xy 82.55 87.63)
 		)
 		(stroke
 			(width 0)
@@ -2575,7 +2575,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 39.37) (xy 93.98 63.5)
+			(xy 93.98 39.37) (xy 93.98 54.61)
 		)
 		(stroke
 			(width 0)
@@ -2605,7 +2605,7 @@
 	)
 	(wire
 		(pts
-			(xy 93.98 63.5) (xy 76.2 63.5)
+			(xy 93.98 54.61) (xy 76.2 54.61)
 		)
 		(stroke
 			(width 0)
@@ -2615,7 +2615,7 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 85.09) (xy 128.27 111.76)
+			(xy 128.27 85.09) (xy 128.27 104.14)
 		)
 		(stroke
 			(width 0)
@@ -2645,7 +2645,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 73.66) (xy 78.74 73.66)
+			(xy 76.2 64.77) (xy 78.74 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2705,7 +2705,7 @@
 	)
 	(wire
 		(pts
-			(xy 60.96 91.44) (xy 60.96 92.71)
+			(xy 60.96 82.55) (xy 60.96 87.63)
 		)
 		(stroke
 			(width 0)
@@ -2715,7 +2715,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 111.76) (xy 137.16 111.76)
+			(xy 132.08 104.14) (xy 137.16 104.14)
 		)
 		(stroke
 			(width 0)
@@ -2735,7 +2735,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 78.74) (xy 85.09 78.74)
+			(xy 76.2 69.85) (xy 85.09 69.85)
 		)
 		(stroke
 			(width 0)
@@ -2755,7 +2755,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 92.71) (xy 120.65 92.71)
+			(xy 92.71 87.63) (xy 120.65 87.63)
 		)
 		(stroke
 			(width 0)
@@ -2775,7 +2775,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 81.28) (xy 101.6 76.2)
+			(xy 101.6 81.28) (xy 101.6 67.31)
 		)
 		(stroke
 			(width 0)
@@ -2785,7 +2785,7 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 71.12) (xy 77.47 71.12)
+			(xy 76.2 62.23) (xy 77.47 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2815,7 +2815,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 82.55) (xy 154.94 92.71)
+			(xy 154.94 82.55) (xy 154.94 87.63)
 		)
 		(stroke
 			(width 0)
@@ -2835,7 +2835,7 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 78.74) (xy 85.09 46.99)
+			(xy 85.09 69.85) (xy 85.09 46.99)
 		)
 		(stroke
 			(width 0)
@@ -2895,7 +2895,7 @@
 	)
 	(wire
 		(pts
-			(xy 127 109.22) (xy 127 72.39)
+			(xy 127 101.6) (xy 127 72.39)
 		)
 		(stroke
 			(width 0)
@@ -2905,7 +2905,7 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 116.84) (xy 82.55 116.84)
+			(xy 85.09 109.22) (xy 82.55 109.22)
 		)
 		(stroke
 			(width 0)
@@ -2925,7 +2925,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 76.2) (xy 76.2 76.2)
+			(xy 101.6 67.31) (xy 76.2 67.31)
 		)
 		(stroke
 			(width 0)
@@ -2935,7 +2935,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 71.12) (xy 77.47 44.45)
+			(xy 77.47 62.23) (xy 77.47 44.45)
 		)
 		(stroke
 			(width 0)
@@ -2945,7 +2945,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 111.76) (xy 128.27 111.76)
+			(xy 110.49 104.14) (xy 128.27 104.14)
 		)
 		(stroke
 			(width 0)
@@ -3005,7 +3005,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 21.59) (xy 46.99 71.12)
+			(xy 46.99 21.59) (xy 46.99 62.23)
 		)
 		(stroke
 			(width 0)
@@ -3055,7 +3055,7 @@
 	)
 	(wire
 		(pts
-			(xy 46.99 71.12) (xy 50.8 71.12)
+			(xy 46.99 62.23) (xy 50.8 62.23)
 		)
 		(stroke
 			(width 0)
@@ -3065,7 +3065,7 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 40.64) (xy 95.25 68.58)
+			(xy 95.25 40.64) (xy 95.25 59.69)
 		)
 		(stroke
 			(width 0)
@@ -3075,7 +3075,7 @@
 	)
 	(wire
 		(pts
-			(xy 110.49 109.22) (xy 127 109.22)
+			(xy 110.49 101.6) (xy 127 101.6)
 		)
 		(stroke
 			(width 0)
@@ -3095,7 +3095,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 81.28) (xy 76.2 81.28)
+			(xy 81.28 72.39) (xy 76.2 72.39)
 		)
 		(stroke
 			(width 0)
@@ -3125,7 +3125,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 99.06) (xy 132.08 107.95)
+			(xy 132.08 91.44) (xy 132.08 100.33)
 		)
 		(stroke
 			(width 0)
@@ -3155,7 +3155,7 @@
 	)
 	(wire
 		(pts
-			(xy 85.09 114.3) (xy 83.82 114.3)
+			(xy 85.09 106.68) (xy 83.82 106.68)
 		)
 		(stroke
 			(width 0)
@@ -3165,7 +3165,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 92.71) (xy 92.71 92.71)
+			(xy 82.55 87.63) (xy 92.71 87.63)
 		)
 		(stroke
 			(width 0)
@@ -3175,7 +3175,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 92.71) (xy 82.55 116.84)
+			(xy 82.55 87.63) (xy 82.55 109.22)
 		)
 		(stroke
 			(width 0)
@@ -3185,7 +3185,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 38.1) (xy 92.71 92.71)
+			(xy 92.71 38.1) (xy 92.71 87.63)
 		)
 		(stroke
 			(width 0)
@@ -3195,7 +3195,7 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 68.58) (xy 50.8 68.58)
+			(xy 48.26 59.69) (xy 50.8 59.69)
 		)
 		(stroke
 			(width 0)
@@ -3215,7 +3215,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.08 107.95) (xy 137.16 107.95)
+			(xy 132.08 100.33) (xy 137.16 100.33)
 		)
 		(stroke
 			(width 0)
@@ -3224,8 +3224,8 @@
 		(uuid "fdc77c0c-279d-41ce-b7b3-143dabb3c81f")
 	)
 	(rectangle
-		(start 78.74 97.79)
-		(end 115.57 123.19)
+		(start 78.74 90.17)
+		(end 115.57 115.57)
 		(stroke
 			(width 0)
 			(type default)
@@ -3236,8 +3236,8 @@
 		(uuid 1b7aeb32-66e1-41f7-92e2-90234a7dbba1)
 	)
 	(rectangle
-		(start 133.35 97.79)
-		(end 149.86 118.11)
+		(start 133.35 90.17)
+		(end 149.86 110.49)
 		(stroke
 			(width 0)
 			(type default)
@@ -3296,7 +3296,7 @@
 		(uuid e46d2408-21cc-403f-82f2-b51e65585695)
 	)
 	(label "To AC Adapter"
-		(at 134.62 100.33 0)
+		(at 134.62 92.71 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3504,7 +3504,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 137.16 111.76 0)
+		(at 137.16 104.14 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3513,7 +3513,7 @@
 		(fields_autoplaced yes)
 		(uuid "0774298b-b8c5-4d1a-a64a-18a4f17ff288")
 		(property "Reference" "#PWR02"
-			(at 137.16 118.11 0)
+			(at 137.16 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3522,7 +3522,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 137.16 116.84 0)
+			(at 137.16 109.22 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3530,7 +3530,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 137.16 111.76 0)
+			(at 137.16 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3539,7 +3539,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 137.16 111.76 0)
+			(at 137.16 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3548,7 +3548,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 137.16 111.76 0)
+			(at 137.16 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3570,7 +3570,7 @@
 	)
 	(symbol
 		(lib_id "MCU_Module:Arduino_Leonardo")
-		(at 63.5 63.5 0)
+		(at 63.5 54.61 0)
 		(mirror y)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3579,7 +3579,7 @@
 		(dnp no)
 		(uuid "39cf681b-2040-4678-b097-f17358fddc2d")
 		(property "Reference" "A1"
-			(at 56.2259 35.56 0)
+			(at 56.2259 26.67 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3588,7 +3588,7 @@
 			)
 		)
 		(property "Value" "Arduino_Leonardo"
-			(at 63.5 71.882 90)
+			(at 63.5 62.992 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3597,7 +3597,7 @@
 			)
 		)
 		(property "Footprint" "Module:Arduino_UNO_R3"
-			(at 63.5 63.5 0)
+			(at 63.5 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3607,7 +3607,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.arduino.cc/en/Main/ArduinoBoardLeonardo"
-			(at 63.5 63.5 0)
+			(at 63.5 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3616,7 +3616,7 @@
 			)
 		)
 		(property "Description" "Arduino LEONARDO Microcontroller Module"
-			(at 63.5 63.5 0)
+			(at 63.5 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4083,7 +4083,7 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 137.16 107.95 0)
+		(at 137.16 100.33 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4092,7 +4092,7 @@
 		(fields_autoplaced yes)
 		(uuid "9677ca8c-3445-4511-91fa-7eb14fcd7790")
 		(property "Reference" "#PWR01"
-			(at 137.16 111.76 0)
+			(at 137.16 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4101,7 +4101,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 137.16 102.87 0)
+			(at 137.16 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4109,7 +4109,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 137.16 107.95 0)
+			(at 137.16 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4118,7 +4118,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 137.16 107.95 0)
+			(at 137.16 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4127,7 +4127,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"+12V\""
-			(at 137.16 107.95 0)
+			(at 137.16 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4222,7 +4222,7 @@
 	)
 	(symbol
 		(lib_id "Driver_Motor:DRV8871DDA")
-		(at 100.33 111.76 0)
+		(at 100.33 104.14 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4231,7 +4231,7 @@
 		(fields_autoplaced yes)
 		(uuid "b9d6c2f5-d410-4e9e-9445-a5d6d3c11df9")
 		(property "Reference" "U1"
-			(at 102.5241 101.6 0)
+			(at 102.5241 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4240,7 +4240,7 @@
 			)
 		)
 		(property "Value" "DRV8871DDA"
-			(at 102.5241 104.14 0)
+			(at 102.5241 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4249,7 +4249,7 @@
 			)
 		)
 		(property "Footprint" "Package_SO:Texas_HTSOP-8-1EP_3.9x4.9mm_P1.27mm_EP2.95x4.9mm_Mask2.4x3.1mm_ThermalVias"
-			(at 106.68 113.03 0)
+			(at 106.68 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4258,7 +4258,7 @@
 			)
 		)
 		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/drv8871.pdf"
-			(at 106.68 113.03 0)
+			(at 106.68 105.41 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4267,7 +4267,7 @@
 			)
 		)
 		(property "Description" "Brushed DC Motor Driver, PWM Control, 45V, 3.6A, Current limiting, HTSOP-8"
-			(at 100.33 111.76 0)
+			(at 100.33 104.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
