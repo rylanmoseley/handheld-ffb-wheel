@@ -1,71 +1,57 @@
-
 #include <Joystick.h>
 #include "DigitalWriteFast.h"
 
-#define encoderPinA 2
-#define encoderPinB 3
+#define ENCODER_MAX_VALUE 1023
+#define ENCODER_MIN_VALUE 0
 
-#define motorPinA 7
-#define motorPinB 8
-#define motorPinPWM 9
-
-#define ENCODER_MAX_VALUE 1200
-#define ENCODER_MIN_VALUE -1200
-
-#define MAX_PWM 200
-
-bool isOutOfRange = false;
 int32_t forces[2]={0};
 Gains gains[2];
 EffectParams effectparams[2];
 
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK,
   3, 0,                  // Button Count, Hat Switch Count
-  true, true, false,     // X - clutch, Y - handbrake, but no Z
-  false, false, false,   //  no Rx, no Ry, no Rz
-  false, false,          // No rudder or throttle
-  true, true, true);    // accelerator, brake, and steering
+  true, true, true,     // X, Y, and Z
+  true, true, true,   //  Rx, Ry, and Rz
+  true, false,          // rudder and throttle
+  false, false, false);    // accelerator, brake, and steering
 
 volatile long value = 0;
 int32_t g_force = 0;
 
-int32_t  currentPosition = 0;
-volatile int8_t oldState = 0;
-const int8_t KNOBDIR[] = {
-  0, 1, -1, 0,
-  -1, 0, 0, 1,
-  1, 0, 0, -1,
-  0, -1, 1, 0
-};
-
-void tick(void)
-{
-  int sig1 = digitalReadFast(encoderPinA);
-  int sig2 = digitalReadFast(encoderPinB);
-  int8_t thisState = sig1 | (sig2 << 1);
-
-  if (oldState != thisState) {
-    currentPosition += KNOBDIR[thisState | (oldState<<2)];
-    oldState = thisState;
-  } 
-}
-
 void setup() {
-  Serial.begin(115200);                        
-  attachInterrupt(digitalPinToInterrupt(encoderPinA),tick,CHANGE);
-  attachInterrupt(digitalPinToInterrupt(encoderPinB),tick,CHANGE);
-  Joystick.setRyAxisRange(0, 500);
-  Joystick.setRxAxisRange(0, 500);
-  Joystick.setYAxisRange(0, 500);
+  Serial.begin(115200);
+
+  gains[0].totalGain = 50;
+  gains[0].springGain = 80;
+
   Joystick.setXAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
+  Joystick.setYAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
+  Joystick.setZAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
+  Joystick.setRxAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
+  Joystick.setRyAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
+  Joystick.setRzAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
+  Joystick.setRudder(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setGains(gains);
   Joystick.begin(true);
 
-  pinMode(motorPinA, OUTPUT);
-  pinMode(motorPinB, OUTPUT);
-  pinMode(motorPinPWM, OUTPUT);
+  // PWM and Digital outputs
+  pinMode(2, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(11, OUTPUT);
 
-  pinMode(A0, INPUT_PULLUP);
+  // Analog Inputs
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(A2, INPUT);
+  pinMode(A3, INPUT);
+  pinMode(A4, INPUT);
+
+  pinMode(A7, INPUT);
+  pinMode(A8, INPUT);
+  pinMode(A9, INPUT);
+  pinMode(A10, INPUT);
+  pinMode(A11, INPUT);
   
   cli();
   TCCR3A = 0; //set TCCR1A 0
@@ -83,54 +69,31 @@ ISR(TIMER3_COMPA_vect){
   Joystick.getUSBPID();
 }
 
-unsigned int interval = 0;
 void loop() {
-  value = currentPosition;
-  
-  if(value > ENCODER_MAX_VALUE)
-  {
-    isOutOfRange = true;
-    value = ENCODER_MAX_VALUE;
-  }else if(value < ENCODER_MIN_VALUE)
-  {
-    isOutOfRange = true;
-    value = ENCODER_MIN_VALUE;
-  }else{
-    isOutOfRange = false;
-  }
-
-  Joystick.setXAxis(value);
-  Joystick.setRxAxis(analogRead(A1));
-  Joystick.setRyAxis(analogRead(A2));
-  Joystick.setYAxis(analogRead(A3));
+  Joystick.setXAxis(analogRead(A0));
+  Joystick.setYAxis(analogRead(A1));
+  Joystick.setZAxis(analogRead(A2));
+  Joystick.setRxAxis(analogRead(A3));
+  Joystick.setRyAxis(analogRead(A4));
+  Joystick.setRzAxis(analogRead(A7));
+  Joystick.setRudder(analogRead(A8));
 
   effectparams[0].springMaxPosition = ENCODER_MAX_VALUE;
-  effectparams[0].springPosition = value;
-  effectparams[1].springMaxPosition = 255;
-  effectparams[1].springPosition = 0;
+  effectparams[0].springPosition = analogRead(A0);
+
   Joystick.setEffectParams(effectparams);
   Joystick.getForce(forces);
 
+  Joystick.setButton(0, analogRead(A11) > 1000);
+  Joystick.setButton(1, analogRead(A9) > 1000);
+  Joystick.setButton(2, analogRead(A10) > 1000);
   
-  if(!isOutOfRange){
-    if(forces[0] > 0)
-    {
-      digitalWrite(motorPinA, HIGH);
-      digitalWrite(motorPinB, LOW);
-      analogWrite(motorPinPWM, abs(forces[0]));
-    }else{
-      digitalWrite(motorPinA, LOW);
-      digitalWrite(motorPinB, HIGH);
-      analogWrite(motorPinPWM, abs(forces[0]));
-    }
-  }else{
-    if(value < 0){
-      digitalWrite(motorPinA, LOW);
-      digitalWrite(motorPinB, HIGH);
-    }else{
-      digitalWrite(motorPinA, HIGH);
-      digitalWrite(motorPinB, LOW);
-    }
-    analogWrite(motorPinPWM, MAX_PWM);
+  if (forces[0] > 0) {
+    digitalWrite(2, HIGH);
+    digitalWrite(4, LOW);
+  } else {
+    digitalWrite(2, LOW);
+    digitalWrite(4, HIGH);
   }
+  analogWrite(3, abs(forces[0]));
 }
