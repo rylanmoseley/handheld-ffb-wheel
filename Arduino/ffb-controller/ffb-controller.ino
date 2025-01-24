@@ -94,11 +94,16 @@ void loop() {
   // status light
   digitalWrite(11, HIGH);
   
-  if (forces[0] > 0) {
+  // adds a 1-unit zone in which the motor will stop at either edge
+  // the >/<s may need swapped depending on orientation
+  if (forces[0] > 0 && analogRead(A0) < ENCODER_MAX_VALUE) {
     analogWrite(3, abs(forces[0]));
     digitalWrite(13, LOW);
-  } else {
+  } else if (analogRead(A0) > ENCODER_MIN_VALUE) {
     analogWrite(13, abs(forces[0]));
     digitalWrite(3, LOW);
+  } else {
+    digitalWrite(3, LOW);
+    digitalWrite(12, LOW);
   }
 }
