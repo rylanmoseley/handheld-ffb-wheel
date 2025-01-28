@@ -135,7 +135,7 @@ void loop() {
   // status light
   digitalWrite(11, HIGH);
 
-  if (forces[0] < forces[1]) {
+  if (abs(forces[0]) < abs(forces[1])) {
     ffbSlot = 1;
   } else {
     ffbSlot = 0;
