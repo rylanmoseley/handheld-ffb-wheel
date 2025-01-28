@@ -2,21 +2,33 @@
 #include "DigitalWriteFast.h"
 
 #define ENCODER_MAX_VALUE 1023
+#define ENCODER_HALF_VALUE 511
 #define ENCODER_MIN_VALUE 0
 
-int32_t forces[2]={0};
+int32_t forces[2] = { 0 };
 Gains gains[2];
 EffectParams effectparams[2];
 
-Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_JOYSTICK,
-  3, 1,                  // Button Count, Hat Switch Count
-  true, true, true,     // X, Y, and Z
-  true, true, false,   //  Rx, Ry, and Rz
-  false, false,          // rudder and throttle
-  false, false, false);    // accelerator, brake, and steering
+Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
+                   7, 0,                  // Button Count, Hat Switch Count
+                   true, true, true,      // X, Y, and Z
+                   true, true, false,     //  Rx, Ry, and Rz
+                   false, false,          // rudder and throttle
+                   false, false, false);  // accelerator, brake, and steering
 
 volatile long value = 0;
 int32_t g_force = 0;
+
+unsigned long upshiftDebounceTime = 0;
+unsigned long downshiftDebounceTime = 0;
+
+int lastUpshiftState = LOW;
+int lastDownshiftState = LOW;
+
+int upshift = LOW;
+int downshift = LOW;
+
+unsigned long debounceDelay = 50;  // ms
 
 void setup() {
   Serial.begin(115200);
@@ -49,20 +61,19 @@ void setup() {
   pinMode(A9, INPUT);
   pinMode(A10, INPUT);
   pinMode(A11, INPUT);
-  
+
   cli();
-  TCCR3A = 0; //set TCCR1A 0
-  TCCR3B = 0; //set TCCR1B 0
-  TCNT3  = 0; //counter init
+  TCCR3A = 0;  //set TCCR1A 0
+  TCCR3B = 0;  //set TCCR1B 0
+  TCNT3 = 0;   //counter init
   OCR3A = 399;
-  TCCR3B |= (1 << WGM32); //open CTC mode
-  TCCR3B |= (1 << CS31); //set CS11 1(8-fold Prescaler)
+  TCCR3B |= (1 << WGM32);  //open CTC mode
+  TCCR3B |= (1 << CS31);   //set CS11 1(8-fold Prescaler)
   TIMSK3 |= (1 << OCIE3A);
   sei();
-  
 }
 
-ISR(TIMER3_COMPA_vect){
+ISR(TIMER3_COMPA_vect) {
   Joystick.getUSBPID();
 }
 
@@ -72,14 +83,20 @@ void loop() {
   Joystick.setZAxis(analogRead(A2));
   Joystick.setRxAxis(analogRead(A3));
   Joystick.setRyAxis(analogRead(A4));
-  
-  int x = analogRead(A7);
-  int y = analogRead(A8);
-  if (x > 400 || y > 400) { // TODO set this with the actual Pots
-    Joystick.setHatSwitch(0, atan2(y, x));
-  } else {
-    Joystick.setHatSwitch(0, -1);
-  }
+
+  signed int x = analogRead(A7) - ENCODER_HALF_VALUE;
+  signed int y = analogRead(A8) - ENCODER_HALF_VALUE;
+
+  signed int x1 = x > 0 ? x : 0;
+  signed int x2 = x < 0 ? abs(x) : 0;
+
+  signed int y1 = y > 0 ? y : 0;
+  signed int y2 = y < 0 ? abs(y) : 0;
+
+  Joystick.setButton(3, millis() % ENCODER_HALF_VALUE < x1 && x1 > 100);
+  Joystick.setButton(4, millis() % ENCODER_HALF_VALUE < x2 && x2 > 100);
+  Joystick.setButton(5, millis() % ENCODER_HALF_VALUE < y1 && y1 > 100);
+  Joystick.setButton(6, millis() % ENCODER_HALF_VALUE < y2 && y2 > 100);
 
   effectparams[0].springMaxPosition = ENCODER_MAX_VALUE;
   effectparams[0].springPosition = analogRead(A0);
@@ -87,13 +104,33 @@ void loop() {
   Joystick.setEffectParams(effectparams);
   Joystick.getForce(forces);
 
-  Joystick.setButton(0, analogRead(A11) > 1000);
-  Joystick.setButton(1, analogRead(A9) > 1000);
-  Joystick.setButton(2, analogRead(A10) > 1000);
+  int upshiftRead = digitalRead(A9);
+  int downshiftRead = digitalRead(A10);
+
+  if (upshiftRead != lastUpshiftState) {
+    upshiftDebounceTime = millis();
+  }
+  if (downshiftRead != lastDownshiftState) {
+    downshiftDebounceTime = millis();
+  }
+
+  if ((millis() - upshiftDebounceTime) > debounceDelay) {
+    upshift = upshiftRead;
+  }
+  if ((millis() - downshiftDebounceTime) > debounceDelay) {
+    downshift = downshiftRead;
+  }
+
+  Joystick.setButton(0, digitalRead(A11));
+  Joystick.setButton(1, upshift);
+  Joystick.setButton(2, downshift);
+
+  lastUpshiftState = upshiftRead;
+  lastDownshiftState = downshiftRead;
 
   // status light
   digitalWrite(11, HIGH);
-  
+
   // adds a 1-unit zone in which the motor will stop at either edge
   // the >/<s may need swapped depending on orientation
   if (forces[0] > 0 && analogRead(A0) < ENCODER_MAX_VALUE) {
