@@ -22,6 +22,8 @@ int32_t g_force = 0;
 unsigned long upshiftDebounceTime = 0;
 unsigned long downshiftDebounceTime = 0;
 
+unsigned int ffbSlot = 0;
+
 int lastUpshiftState = LOW;
 int lastDownshiftState = LOW;
 
@@ -35,6 +37,8 @@ void setup() {
 
   gains[0].totalGain = 50;
   gains[0].springGain = 80;
+  gains[1].totalGain = 50;
+  gains[1].springGain = 80;
 
   Joystick.setXAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setYAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
@@ -98,8 +102,8 @@ void loop() {
   Joystick.setButton(5, millis() % ENCODER_HALF_VALUE < y1 && y1 > 100);
   Joystick.setButton(6, millis() % ENCODER_HALF_VALUE < y2 && y2 > 100);
 
-  effectparams[0].springMaxPosition = ENCODER_MAX_VALUE;
-  effectparams[0].springPosition = analogRead(A0);
+  effectparams[ffbSlot].springMaxPosition = ENCODER_MAX_VALUE;
+  effectparams[ffbSlot].springPosition = analogRead(A0);
 
   Joystick.setEffectParams(effectparams);
   Joystick.getForce(forces);
@@ -131,13 +135,19 @@ void loop() {
   // status light
   digitalWrite(11, HIGH);
 
+  if (forces[0] < forces[1]) {
+    ffbSlot = 1;
+  } else {
+    ffbSlot = 0;
+  }
+
   // adds a 1-unit zone in which the motor will stop at either edge
   // the >/<s may need swapped depending on orientation
-  if (forces[0] > 0 && analogRead(A0) < ENCODER_MAX_VALUE) {
-    analogWrite(3, abs(forces[0]));
+  if (forces[ffbSlot] > 0 && analogRead(A0) < ENCODER_MAX_VALUE) {
+    analogWrite(3, abs(forces[ffbSlot]));
     digitalWrite(13, LOW);
   } else if (analogRead(A0) > ENCODER_MIN_VALUE) {
-    analogWrite(13, abs(forces[0]));
+    analogWrite(13, abs(forces[ffbSlot]));
     digitalWrite(3, LOW);
   } else {
     digitalWrite(3, LOW);
