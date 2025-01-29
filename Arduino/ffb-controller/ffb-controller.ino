@@ -16,9 +16,6 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
                    false, false,          // rudder and throttle
                    false, false, false);  // accelerator, brake, and steering
 
-volatile long value = 0;
-int32_t g_force = 0;
-
 unsigned long upshiftDebounceTime = 0;
 unsigned long downshiftDebounceTime = 0;
 
