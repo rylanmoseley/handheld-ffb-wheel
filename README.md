@@ -59,7 +59,7 @@ Software built using [YukMingLaw/ArduinoJoystickWithFFBLibrary](https://github.c
 |Clutch|Analog In|A3
 |Handbrake|Analog In|A4
 
-![image](https://github.com/user-attachments/assets/53ed3fd2-bcfb-4d93-bdb2-7f510c55670a)
+![image](https://github.com/user-attachments/assets/5b287fa2-1910-443b-b6c6-acd5bc2f8bd9)
 
 
 
