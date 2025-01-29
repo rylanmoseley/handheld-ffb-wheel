@@ -97,10 +97,10 @@ void loop() {
   signed int y1 = y > 0 ? y : 0;
   signed int y2 = y < 0 ? abs(y) : 0;
 
-  Joystick.setButton(3, millis() % ENCODER_HALF_VALUE < x1 && x1 > 100);
-  Joystick.setButton(4, millis() % ENCODER_HALF_VALUE < x2 && x2 > 100);
-  Joystick.setButton(5, millis() % ENCODER_HALF_VALUE < y1 && y1 > 100);
-  Joystick.setButton(6, millis() % ENCODER_HALF_VALUE < y2 && y2 > 100);
+  Joystick.setButton(3, millis() % (ENCODER_HALF_VALUE / 10) < (x1 / 10) && x1 > 100);
+  Joystick.setButton(4, millis() % (ENCODER_HALF_VALUE / 10) < (x2 / 10) && x2 > 100);
+  Joystick.setButton(5, millis() % (ENCODER_HALF_VALUE / 10) < (y1 / 10) && y1 > 100);
+  Joystick.setButton(6, millis() % (ENCODER_HALF_VALUE / 10) < (y2 / 10) && y2 > 100);
 
   effectparams[ffbSlot].springMaxPosition = ENCODER_MAX_VALUE;
   effectparams[ffbSlot].springPosition = analogRead(A0);
