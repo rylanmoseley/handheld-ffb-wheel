@@ -32,6 +32,8 @@ int downshift = LOW;
 
 unsigned long debounceDelay = 50;  // ms
 
+unsigned int statusLightBlinkFrequency = 0; // hz
+
 void setup() {
   Serial.begin(115200);
 
@@ -131,16 +133,7 @@ void loop() {
 
   lastUpshiftState = upshiftRead;
   lastDownshiftState = downshiftRead;
-
-  // status light
-  digitalWrite(11, HIGH);
-
-  if (abs(forces[0]) < abs(forces[1])) {
-    ffbSlot = 1;
-  } else {
-    ffbSlot = 0;
-  }
-
+  
   // adds a 1-unit zone in which the motor will stop at either edge
   // the >/<s may need swapped depending on orientation
   if (forces[ffbSlot] > 0 && analogRead(A0) < ENCODER_MAX_VALUE) {
@@ -152,5 +145,21 @@ void loop() {
   } else {
     digitalWrite(3, LOW);
     digitalWrite(12, LOW);
+  }
+
+  // status light state
+  if (forces[ffbSlot] == 0) {
+    statusLightBlinkFrequency = 500;
+  } else if (analogRead(A0) >= ENCODER_MAX_VALUE) {
+    statusLightBlinkFrequency = 100;
+  } else {
+    statusLightBlinkFrequency = 0;
+  }
+
+  // status light
+  if (statusLightBlinkFrequency == 0) {
+    digitalWrite(11, HIGH);
+  } else {
+    digitalWrite(11, millis() % statusLightBlinkFrequency < 25);
   }
 }
