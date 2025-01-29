@@ -5,9 +5,9 @@
 #define ENCODER_HALF_VALUE 511
 #define ENCODER_MIN_VALUE 0
 
-int32_t forces[2] = { 0 };
-Gains gains[2];
-EffectParams effectparams[2];
+int32_t forces[1] = { 0 };
+Gains gains[1];
+EffectParams effectparams[1];
 
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, JOYSTICK_TYPE_JOYSTICK,
                    7, 0,                  // Button Count, Hat Switch Count
@@ -36,8 +36,6 @@ void setup() {
 
   gains[0].totalGain = 50;
   gains[0].springGain = 80;
-  gains[1].totalGain = 50;
-  gains[1].springGain = 80;
 
   Joystick.setXAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
   Joystick.setYAxisRange(ENCODER_MIN_VALUE, ENCODER_MAX_VALUE);
