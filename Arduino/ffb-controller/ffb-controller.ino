@@ -29,7 +29,8 @@ int downshift = LOW;
 
 unsigned long debounceDelay = 50;  // ms
 
-unsigned int statusLightBlinkFrequency = 0; // hz
+int enableFFB = 0x1;
+int lastDisableCommand = 0x0;
 
 void setup() {
   Serial.begin(115200);
@@ -126,35 +127,28 @@ void loop() {
   Joystick.setButton(1, upshift);
   Joystick.setButton(2, downshift);
 
+  if(upshift && downshift && !lastDisableCommand) {
+    enableFFB = !enableFFB;
+    lastDisableCommand = 0x1;
+  } else if (!upshift && !downshift) {
+    lastDisableCommand = 0x0;
+  }
+
   lastUpshiftState = upshiftRead;
   lastDownshiftState = downshiftRead;
   
   // adds a 1-unit zone in which the motor will stop at either edge
   // the >/<s may need swapped depending on orientation
-  if (forces[ffbSlot] > 0 && analogRead(A0) < ENCODER_MAX_VALUE) {
+  if (forces[ffbSlot] > 0 && analogRead(A0) < (ENCODER_MAX_VALUE - 10) && enableFFB) {
     analogWrite(3, abs(forces[ffbSlot]));
-    digitalWrite(13, LOW);
-  } else if (analogRead(A0) > ENCODER_MIN_VALUE) {
-    analogWrite(13, abs(forces[ffbSlot]));
+    digitalWrite(11, LOW);
+  } else if (forces[ffbSlot] < 0 && analogRead(A0) > (ENCODER_MIN_VALUE + 10) && enableFFB) {
+    analogWrite(11, abs(forces[ffbSlot]));
     digitalWrite(3, LOW);
   } else {
     digitalWrite(3, LOW);
-    digitalWrite(12, LOW);
+    digitalWrite(11, LOW);
   }
-
-  // status light state
-  if (forces[ffbSlot] == 0) {
-    statusLightBlinkFrequency = 500;
-  } else if (analogRead(A0) >= ENCODER_MAX_VALUE) {
-    statusLightBlinkFrequency = 100;
-  } else {
-    statusLightBlinkFrequency = 0;
-  }
-
-  // status light
-  if (statusLightBlinkFrequency == 0) {
-    digitalWrite(11, HIGH);
-  } else {
-    digitalWrite(11, millis() % statusLightBlinkFrequency < 25);
-  }
+  
+    digitalWrite(13, HIGH);
 }
