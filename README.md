@@ -50,9 +50,9 @@ Software built using [YukMingLaw/ArduinoJoystickWithFFBLibrary](https://github.c
 |Camera up/down|Analog In|A8 (D8)
 |Shift Up|Analog In|A9 (D9)
 |Shift Down|Analog In|A10 (D10)
-|Power/status light|Digital Out|D11
+|Power/status light|Digital Out|D13
 |Reset Button|Analog In|A11 (D12)
-|Wheel motor output 2|PWM Out|D13
+|Wheel motor output 2|PWM Out|D11
 |Steering|Analog In|A0
 |Throttle|Analog In|A1
 |Brake|Analog In|A2
