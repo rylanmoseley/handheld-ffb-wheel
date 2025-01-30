@@ -139,10 +139,10 @@ void loop() {
   
   // adds a 1-unit zone in which the motor will stop at either edge
   // the >/<s may need swapped depending on orientation
-  if (forces[ffbSlot] > 0 && analogRead(A0) < (ENCODER_MAX_VALUE - 10) && enableFFB) {
+  if (forces[ffbSlot] > 0 && analogRead(A0) < (ENCODER_MAX_VALUE - 3) && enableFFB) {
     analogWrite(3, abs(forces[ffbSlot]));
     digitalWrite(11, LOW);
-  } else if (forces[ffbSlot] < 0 && analogRead(A0) > (ENCODER_MIN_VALUE + 10) && enableFFB) {
+  } else if (forces[ffbSlot] < 0 && analogRead(A0) > (ENCODER_MIN_VALUE + 3) && enableFFB) {
     analogWrite(11, abs(forces[ffbSlot]));
     digitalWrite(3, LOW);
   } else {
