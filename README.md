@@ -59,7 +59,7 @@ Software built using [YukMingLaw/ArduinoJoystickWithFFBLibrary](https://github.c
 |Clutch|Analog In|A3
 |Handbrake|Analog In|A4
 
-Pinout outdated - see above
+Schematic pins outdated - see Pinout above
 ![image](https://github.com/user-attachments/assets/5b287fa2-1910-443b-b6c6-acd5bc2f8bd9)
 
 
